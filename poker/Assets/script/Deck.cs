@@ -27,6 +27,7 @@ public class Deck : MonoBehaviour
     }
 
 
+
     public void MakeCard()
     {
         //스프라이트를 각 카드에 맞게 할당함
@@ -71,4 +72,16 @@ public class Deck : MonoBehaviour
         }
     }
 
+    public static void Shuffle(ref List<Card> oCards)
+    {
+        List<Card> tCards = new List<Card>();
+        int ndx;
+        while (oCards.Count > 0)
+        {
+            ndx = Random.Range(0, oCards.Count);
+            tCards.Add(oCards[ndx]);
+            oCards.RemoveAt(ndx);
+        }
+        oCards = tCards;
+    }
 }

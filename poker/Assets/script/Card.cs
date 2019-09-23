@@ -19,19 +19,28 @@ public class Card : MonoBehaviour
     {
         
     }
+
+    public class CardDefinition
+    {
+        public string face;
+        public int rank;
+    }
+
+    public bool faceUp
+    {
+        get
+        {
+            return (!back.activeSelf);
+        }
+        set
+        {
+            back.SetActive(!value);
+        }
+    }
+
+
+
 }
 
-public class CardDefinition
-{
-    public string face;
-    public int rank;
-    public List<CardSprite> pips = new List<CardSprite>();
-}
-
-public class CardSprite
-{
-    public Sprite image;
-
-}
 
 
