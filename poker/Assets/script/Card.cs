@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
+    const int num_of_card = 52;
     public string suit;
     public int rank;
     public GameObject back;

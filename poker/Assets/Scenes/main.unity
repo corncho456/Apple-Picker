@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardNames: []
   cards: []
+  cardBack: {fileID: 21300000, guid: 6c5bccd2e6c2c7444bfbf75e784a4a2c, type: 3}
   cardSprites:
   - {fileID: 21300000, guid: fdf13e33e1d4ecf4184f1829be08b4e6, type: 3}
   - {fileID: 21300000, guid: 656afd11a05924b4898c4a882f8dbca2, type: 3}

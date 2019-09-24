@@ -10,6 +10,7 @@ public class Deck : MonoBehaviour
     public List<string> cardNames;
     public List<Card> cards;
 
+    public Sprite cardBack;
     public Sprite[] cardSprites;
     public GameObject prefabCard;
     //public Sprite prefabSprite;
@@ -53,9 +54,10 @@ public class Deck : MonoBehaviour
 
         for (int i = 0;i<cardNames.Count;i++)
         {
+            float a = i * 0.1f;
             tGO = Instantiate(prefabCard) as GameObject;
             tSR = tGO.GetComponent<SpriteRenderer>();
-            tGO.transform.localPosition = new Vector3((i % 13) * 3, i / 13 * 4, 0);
+            tGO.transform.localPosition = new Vector3(0, 0, a);
             tS = cardSprites[i];
             tSR.sprite = tS;
             Card card = tGO.GetComponent<Card>();
@@ -68,6 +70,18 @@ public class Deck : MonoBehaviour
 
             tGO.name = cardNames[i];
 
+
+            tGO = Instantiate(prefabCard) as GameObject;
+            tSR = tGO.GetComponent<SpriteRenderer>();
+            tSR.sprite = cardBack;
+            tGO.transform.parent = card.transform;
+            tGO.transform.localPosition = Vector3.zero;
+            tSR.sortingOrder = 2;
+            tGO.name = "back";
+            card.back = tGO;
+
+            card.faceUp = false;
+                
             cards.Add(card);
         }
     }
@@ -84,4 +98,15 @@ public class Deck : MonoBehaviour
         }
         oCards = tCards;
     }
+
+    //플레이어의 핸드에 카드를 할당
+    public static void getHand(ref List<Card> oCards,ref List<Card> Hand,int a)
+    {
+        for (int i = 0; i < a; i++)
+        {
+            Hand.Add(oCards[0]);
+            oCards.RemoveAt(0);
+        }
+    }
+
 }
