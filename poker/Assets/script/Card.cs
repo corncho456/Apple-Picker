@@ -8,7 +8,7 @@ public class Card : MonoBehaviour
     public string suit;
     public int rank;
     public GameObject back;
-
+    public GameObject cObject;
     // Start is called before the first frame update
     void Start()
     {

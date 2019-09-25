@@ -69,6 +69,7 @@ public class Deck : MonoBehaviour
             tSR.sortingOrder = 1;
 
             tGO.name = cardNames[i];
+            card.cObject = tGO;
 
 
             tGO = Instantiate(prefabCard) as GameObject;
