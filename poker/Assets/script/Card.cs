@@ -6,9 +6,17 @@ public class Card : MonoBehaviour
 {
     const int num_of_card = 52;
     public string suit;
+    public int suitNum;
     public int rank;
     public GameObject back;
     public GameObject cObject;
+
+
+    public Card(string _suit,int _rank)
+    {
+        suit = _suit;
+        rank = _rank;
+    }
     // Start is called before the first frame update
     void Start()
     {

@@ -64,6 +64,7 @@ public class Deck : MonoBehaviour
 
             card.name = cardNames[i];
             card.suit = card.name[0].ToString();
+            card.suitNum = i;
             card.rank = int.Parse(card.name.Substring(1));
 
             tSR.sortingOrder = 1;

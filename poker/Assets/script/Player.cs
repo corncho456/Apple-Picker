@@ -5,11 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public List<Card> playerHand;
+    public List<Card> sortedHand;
     public List<Card> opCard;
     public List<Card> nowOpCard;
     public int money;
     public Transform pPosition;
     public int handRank;
+    public enum enSuit { C, D, H, S }
 
 
     public enum handRanking
@@ -40,5 +42,21 @@ public class Player : MonoBehaviour
             playerHand[i].faceUp = true;
         }
 
+    }
+
+    public void SortCard(ref List<Card> pHand)
+    {
+        pHand.Sort(delegate (Card A, Card B)
+        {
+            if (A.suitNum > B.suitNum) return 1;
+            else if (A.suitNum < B.suitNum) return -1;
+            return 0;
+        });  
+        pHand.Sort(delegate (Card A, Card B)
+        {
+            if (A.rank > B.rank) return 1;
+            else if (A.rank < B.rank) return -1;
+            return 0;
+        });
     }
 }
