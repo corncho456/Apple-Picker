@@ -6,15 +6,13 @@ using UnityEngine;
 
 public class Deck : MonoBehaviour
 {
-
     public List<string> cardNames;
     public List<Card> cards;
 
     public Sprite cardBack;
     public Sprite[] cardSprites;
     public GameObject prefabCard;
-    //public Sprite prefabSprite;
-
+    public GameObject gameDeck;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,8 +24,6 @@ public class Deck : MonoBehaviour
     {
         
     }
-
-
 
     public void MakeCard()
     {
@@ -43,23 +39,23 @@ public class Deck : MonoBehaviour
             {
                 cardNames.Add(s+(i+1));
             }
-
         }
-                
+        
         cards = new List<Card>();
         Sprite tS = null;
         GameObject tGO = null;
         SpriteRenderer tSR = null;
-        print(cardNames.Count);
 
         for (int i = 0;i<cardNames.Count;i++)
         {
             float a = i * 0.1f;
             tGO = Instantiate(prefabCard) as GameObject;
             tSR = tGO.GetComponent<SpriteRenderer>();
+            tGO.transform.parent = gameDeck.transform;
             tGO.transform.localPosition = new Vector3(0, 0, a);
             tS = cardSprites[i];
             tSR.sprite = tS;
+            tGO.transform.localScale = new Vector3(40, 40, 1);
             Card card = tGO.GetComponent<Card>();
 
             card.name = cardNames[i];
@@ -71,19 +67,19 @@ public class Deck : MonoBehaviour
 
             tGO.name = cardNames[i];
             card.cObject = tGO;
-
-
+            
             tGO = Instantiate(prefabCard) as GameObject;
             tSR = tGO.GetComponent<SpriteRenderer>();
             tSR.sprite = cardBack;
             tGO.transform.parent = card.transform;
+            tGO.transform.localScale = new Vector3(1, 1, 1);
             tGO.transform.localPosition = Vector3.zero;
             tSR.sortingOrder = 2;
             tGO.name = "back";
             card.back = tGO;
 
             card.faceUp = false;
-                
+
             cards.Add(card);
         }
     }
@@ -110,5 +106,4 @@ public class Deck : MonoBehaviour
             oCards.RemoveAt(0);
         }
     }
-
 }
