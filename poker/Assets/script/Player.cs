@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
     public List<Card> playerHand;
     public List<Card> sortedHand;
     public List<Card> opCard;

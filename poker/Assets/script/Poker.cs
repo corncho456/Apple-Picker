@@ -7,6 +7,7 @@ public class Poker : MonoBehaviour
     public Deck deck;
     public GameObject P1;
     public GameObject P2;
+    public float allBetting;
 
     public Player player1;
     public Player player2;
