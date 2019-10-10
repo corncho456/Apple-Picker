@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Click_Button : MonoBehaviour
 {
-    public int gold = 0;
-    public int goldPerClick = 1;
-
+    public DataController dataController;
     public void OnClick()
     {
-        gold = gold + goldPerClick;
+        //gold = gold + goldPerClick;
+        int goldPerClick = dataController.GetGoldPerClick();
+        dataController.AddGold(goldPerClick);
     }
+
 
 }
