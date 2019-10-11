@@ -94,4 +94,22 @@ public class DataController : MonoBehaviour
         PlayerPrefs.SetInt(key + "_goldByUpgrade", upgradeButton.goldByUpgrade);
         PlayerPrefs.SetInt(key + "_cost", upgradeButton.currentCost);
     }
+
+    public void SaveItemButton(ItemButton itemButton)
+    {
+        string key = itemButton.itemName;
+
+        PlayerPrefs.SetInt(key + "_level", itemButton.level);
+        PlayerPrefs.SetInt(key + "_cost", itemButton.startCurrentCost);
+        PlayerPrefs.SetInt(key + "_goldPerSec", itemButton.startGoldPerSec);
+    }
+
+    public void LoadItemButton(ItemButton itemButton)
+    {
+        string key = itemButton.itemName;
+
+        itemButton.level = PlayerPrefs.GetInt(key + "_level");
+        itemButton.currentCost = PlayerPrefs.GetInt(key + "_cost", itemButton.startCurrentCost);
+        itemButton.goldPerSec = PlayerPrefs.GetInt(key + "_goldPerSec", itemButton.startGoldPerSec);
+    }
 }
